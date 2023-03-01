@@ -17,6 +17,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\EducationWebApi.Application\EducationWebApi.Application.csproj" />
+    <ProjectReference Include="..\EducationWebApi.DataAccess\EducationWebApi.DataAccess.csproj" />
     <ProjectReference Include="..\EducationWebApi.Shared\EducationWebApi.Shared.csproj" />
   </ItemGroup>
 
