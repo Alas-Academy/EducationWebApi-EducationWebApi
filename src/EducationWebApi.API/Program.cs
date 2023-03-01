@@ -1,4 +1,5 @@
 
+using EducationWebApi.Application;
 using EducationWebApi.DataAccess;
 
 namespace EducationWebApi.API;
@@ -16,6 +17,8 @@ public class Program
         builder.Services.AddSwaggerGen();
 
         builder.Services.AddDataAccessServices(builder.Configuration);
+        builder.Services.AddApplicationServices();
+        builder.Services.AddWebUIServices();
 
         var app = builder.Build();
 

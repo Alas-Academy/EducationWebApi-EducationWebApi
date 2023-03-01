@@ -1,6 +1,7 @@
 ﻿using EducationWebApi.Application.Common;
 using EducationWebApi.DataAccess.Common.MediatRPublishStrategy;
 using EducationWebApi.DataAccess.Persistence;
+using EducationWebApi.DataAccess.Persistence.Interceptors;
 using EducationWebApi.Domain.Entities;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -13,6 +14,7 @@ public static class ConfigureServices
     public static IServiceCollection AddDataAccessServices(this IServiceCollection services, IConfiguration configuration)
     {
 
+        services.AddScoped<AuditableEntitySaveChangesInterceptor>();
 
         var connectionString = configuration.GetConnectionString("DefaultConnection");
 
