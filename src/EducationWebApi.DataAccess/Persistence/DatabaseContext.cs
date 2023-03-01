@@ -1,4 +1,5 @@
 ﻿using EducationWebApi.Application.Common;
+using EducationWebApi.DataAccess.Common;
 using EducationWebApi.Domain.Entities;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
@@ -7,7 +8,12 @@ namespace EducationWebApi.DataAccess.Persistence;
 
 public class DatabaseContext : IdentityDbContext<ApplicationUser, AppRole, Guid>, IDatabaseContext
 {
-    public DatabaseContext(DbContextOptions<DatabaseContext> options) : base(options){}
+    private readonly IMediatorPublisher _mediatorPublisher;
+    public DatabaseContext(DbContextOptions<DatabaseContext> options, 
+        IMediatorPublisher mediatorPublisher) : base(options)
+    {
+        _mediatorPublisher = mediatorPublisher;
+    }
 
 
     public DbSet<Instructor> Instructors  => Set<Instructor>();
@@ -21,15 +27,6 @@ public class DatabaseContext : IdentityDbContext<ApplicationUser, AppRole, Guid>
         builder.ApplyConfigurationsFromAssembly(typeof(DatabaseContext).Assembly);
     }
 
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-    {
-        optionsBuilder.AddInterceptors(_auditableEntitySaveChangesInterceptor);
-    }
-
-    protected override void Dispose(bool disposing)
-    {
-        base.Dispose(disposing);
-    }
 
 
     public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
