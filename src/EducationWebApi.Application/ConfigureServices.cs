@@ -1,5 +1,4 @@
-﻿
-using EducationWebApi.Shared.Services;
+﻿using EducationWebApi.Shared.Services;
 using EducationWebApi.Shared.Services.Impl;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;

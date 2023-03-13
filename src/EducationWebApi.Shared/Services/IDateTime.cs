@@ -1,4 +1,4 @@
-﻿namespace EducationWebApi.Shared.Services.Impl;
+﻿namespace EducationWebApi.Shared.Services;
 
 public interface IDateTime
 {

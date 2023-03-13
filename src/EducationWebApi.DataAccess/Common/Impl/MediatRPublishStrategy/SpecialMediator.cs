@@ -1,7 +1,6 @@
-﻿
-using MediatR;
+﻿using MediatR;
 
-namespace EducationWebApi.DataAccess.Common.MediatRPublishStrategy;
+namespace EducationWebApi.DataAccess.Common.Impl.MediatRPublishStrategy;
 
 public class SpecialMediator : Mediator
 {

@@ -1,7 +1,7 @@
 ﻿using EducationWebApi.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 
-namespace EducationWebApi.Application.Common;
+namespace EducationWebApi.DataAccess.Common;
 
 public interface IDatabaseContext
 {

@@ -1,9 +1,7 @@
-﻿
-using EducationWebApi.Application.Common;
-using EducationWebApi.Application.Enums;
+﻿using EducationWebApi.DataAccess.Common.Enums;
 using MediatR;
 
-namespace EducationWebApi.DataAccess.Common.MediatRPublishStrategy;
+namespace EducationWebApi.DataAccess.Common.Impl.MediatRPublishStrategy;
 
 public class MediatorPublisher : IMediatorPublisher
 {
@@ -26,12 +24,12 @@ public class MediatorPublisher : IMediatorPublisher
 
     public Task Publish<TNotification>(TNotification notification)
     {
-        return Publish(notification, DefaultStrategy, default(CancellationToken));
+        return Publish(notification, DefaultStrategy, default);
     }
 
     public Task Publish<TNotification>(TNotification notification, PublishStrategy strategy)
     {
-        return Publish(notification, strategy, default(CancellationToken));
+        return Publish(notification, strategy, default);
     }
 
     public Task Publish<TNotification>(TNotification notification, CancellationToken cancellationToken)

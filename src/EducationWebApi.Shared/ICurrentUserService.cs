@@ -1,4 +1,4 @@
-﻿namespace EducationWebApi.Application.Common;
+﻿namespace EducationWebApi.Shared.Services;
 
 public interface ICurrentUserService
 {

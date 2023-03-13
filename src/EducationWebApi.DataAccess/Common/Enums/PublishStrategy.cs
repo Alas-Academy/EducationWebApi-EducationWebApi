@@ -1,4 +1,4 @@
-﻿namespace EducationWebApi.Application.Enums;
+﻿namespace EducationWebApi.DataAccess.Common.Enums;
 
 public enum PublishStrategy
 {

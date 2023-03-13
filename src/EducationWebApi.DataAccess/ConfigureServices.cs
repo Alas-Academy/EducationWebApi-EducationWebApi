@@ -1,5 +1,5 @@
-﻿using EducationWebApi.Application.Common;
-using EducationWebApi.DataAccess.Common.MediatRPublishStrategy;
+﻿using EducationWebApi.DataAccess.Common;
+using EducationWebApi.DataAccess.Common.Impl.MediatRPublishStrategy;
 using EducationWebApi.DataAccess.Persistence;
 using EducationWebApi.DataAccess.Persistence.Interceptors;
 using EducationWebApi.Domain.Entities;
@@ -22,6 +22,8 @@ public static class ConfigureServices
                     options.UseSqlServer(connectionString));
 
         services.AddScoped<IDatabaseContext>(provider => provider.GetRequiredService<DatabaseContext>());
+
+        services.AddScoped<ApplicationDbContextInitialiser>();
 
         #region Identity services configure
         services.AddIdentity<ApplicationUser, AppRole>(options =>

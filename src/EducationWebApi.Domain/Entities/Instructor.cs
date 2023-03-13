@@ -2,6 +2,6 @@
 namespace EducationWebApi.Domain.Entities;
 
 public class Instructor : ApplicationUser
-{
-    public virtual ICollection<Student> Students { get; set; } = new List<Student>();
+{ 
+    public virtual ICollection<StudentInstructor> StudentInstructors { get; set; } = new List<StudentInstructor>();
 }

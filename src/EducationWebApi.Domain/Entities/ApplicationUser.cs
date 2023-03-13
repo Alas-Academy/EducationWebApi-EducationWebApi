@@ -11,8 +11,8 @@ public class ApplicationUser : IdentityUser<Guid>
     public DateTime Birthday { get; set; }
     public Gender Gender { get; set; }
     public DateTime? RefreshTokenEndDate { get; set; }
-    public string ProfilePhotoUrl { get; set; } = String.Empty;
-    public virtual ICollection<StudentInstructor> StudentInstructors { get; set; } = new List<StudentInstructor>();
+    public bool IsTempPassword { get; set; }
+    public string? ProfilePhotoUrl { get; set; }
 
     #region Domain Events are used to publish events to the Mediator
     private readonly List<BaseEvent> _domainEvents = new();

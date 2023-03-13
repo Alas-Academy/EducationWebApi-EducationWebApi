@@ -1,7 +1,7 @@
-﻿using EducationWebApi.Application.Common;
+﻿using Microsoft.AspNetCore.Http;
 using System.Security.Claims;
 
-namespace EducationWebApi.API.Services;
+namespace EducationWebApi.Shared.Services;
 
 public class CurrentUserService : ICurrentUserService
 {

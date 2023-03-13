@@ -1,9 +1,9 @@
-﻿using EducationWebApi.Application.Common;
-using EducationWebApi.DataAccess.Common;
+﻿using EducationWebApi.DataAccess.Common;
 using EducationWebApi.DataAccess.Persistence.Interceptors;
 using EducationWebApi.Domain.Entities;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using System.Reflection.Emit;
 
 namespace EducationWebApi.DataAccess.Persistence;
 
@@ -27,6 +27,22 @@ public class DatabaseContext : IdentityDbContext<ApplicationUser, AppRole, Guid>
     protected override void OnModelCreating(ModelBuilder builder)
     {
         base.OnModelCreating(builder);
+
+        builder.Entity<StudentInstructor>()
+            .HasKey(si => new { si.StudentId, si.InstructorId });
+
+        builder.Entity<StudentInstructor>()
+            .HasOne(si => si.Student)
+            .WithMany(s => s.StudentInstructors)
+            .HasForeignKey(si => si.StudentId)
+            .OnDelete(DeleteBehavior.NoAction);
+
+        builder.Entity<StudentInstructor>()
+            .HasOne(si => si.Instructor)
+            .WithMany(i => i.StudentInstructors)
+            .HasForeignKey(si => si.InstructorId)
+            .OnDelete(DeleteBehavior.NoAction);
+
 
         builder.ApplyConfigurationsFromAssembly(typeof(DatabaseContext).Assembly);
     }

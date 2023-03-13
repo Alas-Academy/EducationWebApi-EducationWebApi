@@ -1,5 +1,4 @@
-﻿using EducationWebApi.Application.Common;
-using EducationWebApi.Application.Enums;
+﻿using EducationWebApi.DataAccess.Common.Enums;
 using EducationWebApi.Domain.Common;
 using EducationWebApi.Domain.Entities;
 using Microsoft.EntityFrameworkCore;

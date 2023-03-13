@@ -1,8 +1,4 @@
-﻿using EducationWebApi.API.Services;
-using EducationWebApi.Application.Common;
-using EducationWebApi.DataAccess.Common.MediatRPublishStrategy;
-using EducationWebApi.Shared.Services;
-using EducationWebApi.Shared.Services.Impl;
+﻿using EducationWebApi.Shared.Services;
 
 namespace EducationWebApi.API;
 

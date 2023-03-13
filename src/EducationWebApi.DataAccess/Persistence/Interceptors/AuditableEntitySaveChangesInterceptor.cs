@@ -2,8 +2,7 @@
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.EntityFrameworkCore;
-using EducationWebApi.Application.Common;
-using EducationWebApi.Shared.Services.Impl;
+using EducationWebApi.Shared.Services;
 
 namespace EducationWebApi.DataAccess.Persistence.Interceptors;
 

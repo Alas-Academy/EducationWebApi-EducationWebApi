@@ -1,7 +1,7 @@
-﻿using EducationWebApi.Application.Enums;
+﻿using EducationWebApi.DataAccess.Common.Enums;
 using MediatR;
 
-namespace EducationWebApi.Application.Common;
+namespace EducationWebApi.DataAccess.Common;
 
 public interface IMediatorPublisher
 {

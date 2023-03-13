@@ -11,8 +11,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\EducationWebApi.Domain\EducationWebApi.Domain.csproj" />
-    <ProjectReference Include="..\EducationWebApi.Shared\EducationWebApi.Shared.csproj" />
+    <ProjectReference Include="..\EducationWebApi.DataAccess\EducationWebApi.DataAccess.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Common\" />
+    <Folder Include="Enums\" />
   </ItemGroup>
 
 </Project>
