@@ -5,7 +5,6 @@ using EducationWebApi.DataAccess.Persistence.Interceptors;
 using EducationWebApi.Domain.Entities;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using System.Reflection.Emit;
 using File = EducationWebApi.Core.Entities.FileModes.File;
 
 namespace EducationWebApi.DataAccess.Persistence;
@@ -21,7 +20,6 @@ public class DatabaseContext : IdentityDbContext<ApplicationUser, AppRole, Guid>
         _mediatorPublisher = mediatorPublisher;
         _auditableEntitySaveChangesInterceptor = auditableEntitySaveChangesInterceptor;
     }
-
 
     public DbSet<Instructor> Instructors  => Set<Instructor>();
     public DbSet<Student> Students => Set<Student>();
