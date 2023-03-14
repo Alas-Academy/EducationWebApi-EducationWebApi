@@ -1,10 +1,15 @@
-﻿using EducationWebApi.Domain.Common;
+﻿using EducationWebApi.Core.Entities;
+using EducationWebApi.Domain.Common;
 using Microsoft.AspNetCore.Identity;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace EducationWebApi.Domain.Entities;
 public class ApplicationUser : IdentityUser<Guid>
 {
+    public ApplicationUser()
+    {
+        SocialMedias = new HashSet<SocialMedia>();
+    }
     public string NameSurname { get; set; } = null!;
     public override string? PhoneNumber { get; set; }
     public string? RefreshToken { get; set; }
@@ -13,6 +18,7 @@ public class ApplicationUser : IdentityUser<Guid>
     public DateTime? RefreshTokenEndDate { get; set; }
     public bool IsTempPassword { get; set; }
     public string? ProfilePhotoUrl { get; set; }
+    public ICollection<SocialMedia>? SocialMedias { get; set; }
 
     #region Domain Events are used to publish events to the Mediator
     private readonly List<BaseEvent> _domainEvents = new();
