@@ -4,16 +4,18 @@ using EducationWebApi.DataAccess.Persistence;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace EducationWebApi.DataAccess.Migrations
+namespace EducationWebApi.DataAccess.Persistence.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    partial class DatabaseContextModelSnapshot : ModelSnapshot
+    [Migration("20230315153842_AddMigrationAllModels2")]
+    partial class AddMigrationAllModels2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -101,12 +103,12 @@ namespace EducationWebApi.DataAccess.Migrations
                     b.Property<Guid>("CourseId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("CertificateId")
+                    b.Property<Guid>("EduCertificateId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.HasKey("CourseId", "CertificateId");
+                    b.HasKey("CourseId", "EduCertificateId");
 
-                    b.HasIndex("CertificateId");
+                    b.HasIndex("EduCertificateId");
 
                     b.ToTable("CourseEduCertificates");
                 });
@@ -616,21 +618,19 @@ namespace EducationWebApi.DataAccess.Migrations
 
             modelBuilder.Entity("EducationWebApi.Core.Entities.CourseEduCertificate", b =>
                 {
-                    b.HasOne("EducationWebApi.Core.Entities.EduCertificate", "Certificate")
-                        .WithMany("CourseEduCertificates")
-                        .HasForeignKey("CertificateId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("EducationWebApi.Core.Entities.Course", "Course")
                         .WithMany("CourseEduCertificates")
                         .HasForeignKey("CourseId")
-                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Certificate");
+                    b.HasOne("EducationWebApi.Core.Entities.EduCertificate", "EduCertificate")
+                        .WithMany("CourseEduCertificates")
+                        .HasForeignKey("EduCertificateId")
+                        .IsRequired();
 
                     b.Navigation("Course");
+
+                    b.Navigation("EduCertificate");
                 });
 
             modelBuilder.Entity("EducationWebApi.Core.Entities.CoursesFeature", b =>
