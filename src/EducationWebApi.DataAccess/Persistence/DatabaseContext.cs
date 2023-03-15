@@ -60,20 +60,19 @@ public class DatabaseContext : IdentityDbContext<ApplicationUser, AppRole, Guid>
                  .OnDelete(DeleteBehavior.Cascade);
 
         builder.Entity<CourseEduCertificate>()
-           .HasKey(cc => new { cc.CourseId, cc.CertificateId });
+           .HasKey(cc => new { cc.CourseId, cc.EduCertificateId });
 
         builder.Entity<CourseEduCertificate>()
             .HasOne(cc => cc.Course)
             .WithMany(c => c.CourseEduCertificates)
             .HasForeignKey(cc => cc.CourseId)
-            .OnDelete(DeleteBehavior.Cascade);
+            .OnDelete(DeleteBehavior.ClientSetNull);
 
         builder.Entity<CourseEduCertificate>()
-            .HasOne(cc => cc.Certificate)
+            .HasOne(cc => cc.EduCertificate)
             .WithMany(c => c.CourseEduCertificates)
-            .HasForeignKey(cc => cc.CertificateId)
-            .OnDelete(DeleteBehavior.Cascade);
-
+            .HasForeignKey(cc => cc.EduCertificateId)
+            .OnDelete(DeleteBehavior.ClientSetNull);
 
         builder.ApplyConfigurationsFromAssembly(typeof(DatabaseContext).Assembly);
     }
