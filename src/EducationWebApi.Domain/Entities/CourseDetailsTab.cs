@@ -1,5 +1,4 @@
 ﻿using EducationWebApi.Domain.Common;
-
 namespace EducationWebApi.Core.Entities;
 
 public class CourseDetailsTab : BaseAuditableEntity
