@@ -17,7 +17,12 @@ public class EduCertificateController :  ApiControllerBase
     public async Task<ActionResult<List<GetAllEduCertificateDto>>> GetAllCertificate([FromQuery] GetAllEduCertificateQuery query)
     {
         return await Mediator.Send(query);
+    }   
+
+    [HttpDelete("{id}")]
+    public async Task<ActionResult> DeleteCertificate(Guid id)
+    {
+        await Mediator.Send(new DeleteEduCertificateCommand(id));
+        return NoContent();
     }
-
-
 }

@@ -24,9 +24,18 @@ public class DeleteCourseCommanHandler : IRequestHandler<DeleteCourseCommand>
             .FirstOrDefaultAsync(x => x.Id == request.Id, cancellationToken);
         if (course == null) 
             throw new NotFoundException("Course Not Found");
+        try
+        {
+            await _storageService.DeleteAsync(course.CourseImageFile.Path, course.CourseImageFile.FileName);
 
-        await _storageService.DeleteAsync(course.CourseImageFile.Path, course.CourseImageFile.FileName);
-         _context.Courses.Remove(course);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex);
+        }
+        var eduCertificate = await _context.CourseEduCertificates.Where(x => x.CourseId == course.Id).ToListAsync();
+        _context.CourseEduCertificates.RemoveRange(eduCertificate);
+        _context.Courses.Remove(course);
         await  _context.SaveChangesAsync();
         return Unit.Value;
     }

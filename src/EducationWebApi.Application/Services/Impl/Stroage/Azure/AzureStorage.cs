@@ -12,7 +12,7 @@ public class AzureStorage : Storage, IAzureStorage
     BlobContainerClient _blobContainerClient;
     public AzureStorage(IConfiguration configuration)
     {
-        _blobServiceClient = new("DefaultEndpointsProtocol=https;AccountName=ibucloudstroage;AccountKey=F/+WFl73Dy6VdUsG6A+cIs3oIjSIm75RadJn3S38aHf9wN7C+0DrlkrFHWDlrJ14lwjlXs4J86G8+AStJdr5aA==;EndpointSuffix=core.windows.net");
+        _blobServiceClient = new("DefaultEndpointsProtocol=https;AccountName=alasacademy;AccountKey=bRebku3bLIeGF41AMnYFamHtGabZF11lh1PfXNILHWS2Im6vLhdNUAodN2z3A+rqcN3/FSGfZepb+AStsouPmg==;EndpointSuffix=core.windows.net");
     }
 
     public async Task DeleteAsync(string containerName, string fileName)

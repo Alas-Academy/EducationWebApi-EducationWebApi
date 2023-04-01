@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace EducationWebApi.API.Controllers;
 
-public class CourseCoontroller : ApiControllerBase
+public class CourseController : ApiControllerBase
 {
     [HttpPost("[action]")]
     public async Task<ActionResult<Result>> AddCourse([FromForm] CreateCourseCommand command)

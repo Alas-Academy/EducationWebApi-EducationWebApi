@@ -1,4 +1,3 @@
-
 using EducationWebApi.Application;
 using EducationWebApi.Application.Services.Impl.Stroage.Azure;
 using EducationWebApi.DataAccess;
@@ -26,8 +25,6 @@ public class Program
 
         if (app.Environment.IsDevelopment())
         {
-            app.UseSwagger();
-            app.UseSwaggerUI();
             app.UseDeveloperExceptionPage();
             app.UseMigrationsEndPoint();
 
@@ -43,6 +40,8 @@ public class Program
         {
             app.UseHsts();
         }
+        app.UseSwagger();
+        app.UseSwaggerUI();
 
         app.UseCors(
             builder => builder
