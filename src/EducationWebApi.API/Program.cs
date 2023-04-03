@@ -1,5 +1,5 @@
-
 using EducationWebApi.Application;
+using EducationWebApi.Application.Services.Impl.Stroage.Azure;
 using EducationWebApi.DataAccess;
 using EducationWebApi.DataAccess.Persistence;
 
@@ -18,15 +18,13 @@ public class Program
         builder.Services.AddDataAccessServices(builder.Configuration);
         builder.Services.AddApplicationServices();
         builder.Services.AddWebUIServices();
-
+        builder.Services.AddStorage<AzureStorage>();
         var app = builder.Build();
 
         // Configure the HTTP request pipeline.
 
         if (app.Environment.IsDevelopment())
         {
-            app.UseSwagger();
-            app.UseSwaggerUI();
             app.UseDeveloperExceptionPage();
             app.UseMigrationsEndPoint();
 
@@ -42,6 +40,16 @@ public class Program
         {
             app.UseHsts();
         }
+        app.UseSwagger();
+        app.UseSwaggerUI();
+
+        app.UseCors(
+            builder => builder
+                   .AllowAnyMethod()
+                   .AllowAnyHeader()
+                   .SetIsOriginAllowed(origin => true)
+                   .AllowCredentials()
+         );
 
         app.UseHttpsRedirection();
 

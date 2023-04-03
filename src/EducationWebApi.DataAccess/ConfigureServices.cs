@@ -35,7 +35,10 @@ public static class ConfigureServices
             .AddDefaultTokenProviders();
         #endregion
 
+        #region Dependency MediatorPublisher
         services.AddScoped<IMediatorPublisher, MediatorPublisher>();
+        #endregion
+
 
         return services;
     }
