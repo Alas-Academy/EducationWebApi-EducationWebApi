@@ -8,8 +8,10 @@ namespace EducationWebApi.Application.Features;
 public class CourseGetByIdQueryDto : IMapFrom<Course>
 {
     public Guid Id { get; set; }
+    public string PathName { get; set; } = string.Empty;
     public string Name { get; set; } = null!;
     public string? Icon { get; set; }
+
     public string Image { get; set; } = null!;
     public CourseFeatureDto? Feature { get; set; }
     public ICollection<CourseDetailsDto>? Details { get; set; }

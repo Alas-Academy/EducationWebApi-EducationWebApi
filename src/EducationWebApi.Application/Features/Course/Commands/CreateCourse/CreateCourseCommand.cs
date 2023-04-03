@@ -51,6 +51,7 @@ public class CreateCourseCommandHandler : IRequestHandler<CreateCourseCommand, R
         Course course = new() { 
         Name = request.Name,
         Icon = request.Icon,
+        PathName = request.PathName,
         CourseImageFile = courseImage,
         CourseFeatures = coursesFeature,
         CourseDetails = request.CourseDetails.Select(x => new CourseDetailsTab
