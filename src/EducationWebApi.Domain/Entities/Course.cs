@@ -13,6 +13,7 @@ public class Course : BaseAuditableEntity
     }
     public string Name { get; set; } = null!;
     public string? Icon { get; set; }
+    public string PathName { get; set; } = string.Empty;
     public Guid CourseImageFileId { get; set; }
     public CourseImageFile CourseImageFile { get; set; } = null!;
     public CoursesFeature CourseFeatures { get; set; }

@@ -11,6 +11,7 @@ namespace EducationWebApi.Application.Features;
 public record CreateCourseCommand : IRequest<Result>
 {
     public string Name { get; init; } = null!;
+    public string PathName { get; set; } = string.Empty;
     public string? Icon { get; init; }
     public IFormFile CourseImage { get; init; } = null!;
     public int Modules { get; init; } = 1;
